@@ -18,7 +18,7 @@ const private_key = `-----BEGIN RSA PRIVATE KEY-----MIIEogIBAAKCAQEAxmCn2SyQJwPe
 function doAccount() {
     // const appToken = getAccAppToken();
     console.log("doAccInitiation");
-    const result = doAccInitiation1();
+    const result = doAccInitiation();
     console.log(result);
 
 }
