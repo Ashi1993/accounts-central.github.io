@@ -154,10 +154,6 @@ async function doAccInitiation1() {
     //         console.log(error);
     //     });
 
-    const fs = require('fs');
-    const https = require('https');
-    const axios = require('axios');
-
     // ...
     const httpsAgent = new https.Agent({
         // cert: fs.readFileSync('qseal.pem'),
