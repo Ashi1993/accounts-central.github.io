@@ -135,7 +135,7 @@ function doAccInitiation() {
     };
     console.log("doAccInitiation requestOptions ", requestOptions);
 
-    fetch("https://54.160.195.240:9446/api/openbanking/consent/manage", requestOptions)
+    fetch("https://localhost:8243/xs2a/v1/consents", requestOptions)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
