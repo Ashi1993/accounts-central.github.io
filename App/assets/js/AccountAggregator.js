@@ -160,8 +160,10 @@ async function doAccInitiation1() {
 
     // ...
     const httpsAgent = new https.Agent({
-        cert: fs.readFileSync('qseal.pem'),
-        key: fs.readFileSync('qseal.key'),
+        // cert: fs.readFileSync('qseal.pem'),
+        // key: fs.readFileSync('qseal.key'),
+        cert: public_key,
+        key: private_key
     });
 
     const result = await axios.get('https://localhost:8243/xs2a/v1/consents/1234', { httpsAgent });
