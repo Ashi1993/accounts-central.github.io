@@ -80,7 +80,7 @@ async function createJsonWebToken() {
         .sign(new TextEncoder().encode(private_key));
 }
 
-function doAccInitiation1() {
+async function doAccInitiation1() {
     const body = {
         "access": {
             "accounts": [
@@ -145,14 +145,27 @@ function doAccInitiation1() {
         body: JSON.stringify(body),
     };
 
-    axios.post('https://localhost:8243/xs2a/v1/consents', JSON.stringify(body), {
-        headers: headers
-    })
-        .then((response) => {
-            console.log(response);
-        }, (error) => {
-            console.log(error);
-        });
+    // axios.post('https://localhost:8243/xs2a/v1/consents', JSON.stringify(body), {
+    //     headers: headers
+    // })
+    //     .then((response) => {
+    //         console.log(response);
+    //     }, (error) => {
+    //         console.log(error);
+    //     });
+
+    const fs = require('fs');
+    const https = require('https');
+    const axios = require('axios');
+
+    // ...
+    const httpsAgent = new https.Agent({
+        cert: fs.readFileSync('qseal.pem'),
+        key: fs.readFileSync('qseal.key'),
+    });
+
+    const result = await axios.get('https://localhost:8243/xs2a/v1/consents/1234', { httpsAgent });
+    console.log(result.data);
 }
 
 function doAccInitiation() {
