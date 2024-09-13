@@ -15,8 +15,8 @@ function doAccount() {
     console.log("doAccInitiation");
     const token = getAccAppToken();
 
-    const result = doAccInitiation(token);
-    console.log(result);
+    const consentId = doAccInitiation(token);
+    console.log(consentId);
 
 }
 
