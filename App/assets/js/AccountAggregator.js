@@ -11,17 +11,11 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-// const public_key = `-----BEGIN CERTIFICATE-----MIIFPTCCAyWgAwIBAgIJAIlBZ+gbD8BqMA0GCSqGSIb3DQEBBQUAMHMxCzAJBgNBAYTAkxLMQswCQYDVQQIDAJXUDEMMAoGA1UEBwwDQ09MMQ0wCwYDVQQKDARXU08yMQswCQYDVQQLDAJPQjELMAkGA1UEAwwCT0IxIDAeBgkqhkiG9w0BCQEWEW1hbHNoYW5pQHdzbzIuY29tMB4XDTIzMDMxMzExNDgwOVoXDTI4MDMxMTExNDgwOVowczELMAkGA1UEBhMCR0IxGjAYBgNVBAoMEVdTTzIgKFVLKSBMSU1JVEVEMSswKQYDVQRhDCJQU0RHQi1PQi1Vbmtub3duMDAxNTgwMDAwMUhRUXJaQUFYMRswGQYDVQQDDBIwMDE1ODAwMDAxSFFRclpBQVgwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDGYKfZLJAnA96lQ3AuCOl/wn0HzfnNUv01c43RIbaiQsS5VL8RChkryeCZHuOyDWYGkLfZzyZJQLnfeyBZ6hbzaoNzgBprmxzYmS2scG7+R1UzQnkJLxKn7eZToreldt91/UBARNhCZ2whM85Z5wcosAwv5vvSY+mDizBBujUbZ5J956OTxtED5kDgRerAaD6toOGSjpqlOB6qTBcHOPoY3vTanDcTJpeHgkGIIkCOIJZLopoeXrO7kU34qm9H0ZgOkOAak4Qwrth7GlHtVaN+PSy3xj+a8s89/2lQSdPez7uodGuoZbeMbzljZ5u9jPeT6Dm0tXRIa/iXMUIyuXv9AgMBAAGjgdMwgdAwDgYDVR0PAQH/BAQDAgbAMB0GA1UdDgQWBBQfCnzY4BVxYLd58PFpObzGSoCitjCBngYIKwYBBQUHAQMEgZEwgY4wEwYGBACORgEGMAkGBwQAjkYBBgIwdwYGBACBmCcCMG0wRjBEBgcEAIGYJwEBDAZQU1BfQVMGBwQAgZgnAQIMBlBTUF9QSQYHBACBmCcBAwwGUFNQX0FJBgcEAIGYJwEEDAZQU1BfSUMMG0ZpbmFuY2lhbCBDb25kdWN0IEF1dGhvcml0eQwGR0ItRkNBMA0GCSqGSIb3DQEBBQUAA4ICAQCbMjnB+o8IV0mYBu4iqaFkKBk+E6EnXEcJsRA7IrqGv8S2nWluaWbNYUGfbYaeTT6bfY4VcWsZMGG3TDNLj5VVFUg90zGmK4Balz+J0eIYrG5heialNlu4xjsTpqS4lIpK94SgWJCjuab4sMvif5kY4svY5z3tbM/uNHi69R9N8y4wO75cVhphftx1yWpNDscBSMHNS55m64O1a5D+Hng0umNbK1nkQbgBjkM5MTbcKrC3Twn4fQyTh8xkZp1d1xQbzUbCWy+VpoS0DYyCIlX9Ip9pQxIjOvhGS3toqgmHLBEztEaEm3Kq0+jX6gimzhqI/a+RbsJKB7Dyi9rc6Gu+dJqy2OxilwO4YWuN6SWDw1Oqhpjeku1o7ZJzeXDuqENHO56AboR9RSU1nt7SymYTOoswO8EP+gbEvoI34el+4C7fFObCHBOZqhvEWo4TXGN+9kiiFzyWacw85e+Kc+jy4ghnkS5pD1BKtaxoGiBxeZwJJ+hCEoDkU5WD2s46Dk7Zg9nPJE0sqdzLnvCcggvnugZZCgXmorSClfchPH8OJYKsmLCG4vGYXwPjz9KNfWWYUWOpOSD9KolKmEgF1pTgAP//gfBI1owP/epYbA6tuDJuedfIDPFaoaB4jj94lRQ83NWIabA1DAXGSIqltwesgf3IzM57dGeqBnHfJhN3Jg==-----END CERTIFICATE-----`
-
-// const private_key = `-----BEGIN RSA PRIVATE KEY-----MIIEogIBAAKCAQEAxmCn2SyQJwPepUNwLgjpf8J9B835zVL9NXON0SG2okLEuVS/EQoZK8ngmR7jsg1mBpC32c8mSUC533sgWeoW82qDc4Aaa5sc2JktrHBu/kdVM0J5CS8Sp+3mU6K3pXbfdf1AQETYQmdsITPOWecHKLAML+b70mPpg4swQbo1G2eSfeejk8bRA+ZA4EXqwGg+raDhko6apTgeqkwXBzj6GN702pw3EyaXh4JBiCJAjiCWS6KaHl6zu5FN+KpvR9GYDpDgGpOEMK7YexpR7VWjfj0st8Y/mvLPPf9pUEnT3s+7qHRrqGW3jG85Y2ebvYz3k+g5tLV0SGv4lzFCMrl7/QIDAQABAoIBADXsE/POTyirvptBZ3674Wxe20mBzYLoKfebf1L3TQNyDrMpu/3PtuPWLfyxDsdZKQBj2fWUfx2uQFfkyfhmzvI/Y5fDnGrfcMnXaTjUHvdzQE98pBXA+9s1qUPWmQCa/Ua/HfXaQMZcAmJMCK0bRTDkGYvzx0N68QBWlzlmegUGeRDqnAzdWhJ5WWdUeFMyaPgYdowfD9QlbIvU7LM5gBK3rC3/R6UETeXdqMJPq/YckP7kS+PuZc3Q+E2CWFaf4Xoa3aZTdScPVkrHAPKJrw6aonbG4I6TXTkoamuFaZgbA2fJAGsgaOUKd1XyflV+PvfPYAJ7zp5Jzbq56VvAn0ECgYEA+B8sc5p5AARxj7XsYG2Cz7zJafh7ZweNL83LzoeFLrmvXmnrwzDWwbfm8yPQYiq3fbboixBzXwK7bhWqPqHztt07RYAWVXU7f5/zDU+otQpxMNiRSpBYR8TlZRBxR0gB3ccNh15bVEuMjHoCtVowAzP1NoQfGOv1xcn1m2Cd6vkCgYEAzK0ke218RyCwcn/UIKV1todIU1m6gZpQ0ZWh39ID0hgcqbOixuKSPldUgc+MRHPJGvIPd5VuVpZOTKqLEiOqM3rK5rjwYr8uD5BSIB7yCB1CwcPiGu41TgLsCU8NcjYb9thmZnUVVoAKIcwUkEdrCAEgVx3odJDopYent96GNiUCgYAltVckGo3ZGtPHa3aJERuYRrC1kjXu6o7ifPxEXwQ2nbGxP5e9CmcY+cH3obHBuYw5Ztrgh5eBEQE7Mb+11Rcc63JelaDPTAnG06A0na6eFQAu1DsAgf9oqNvUCDOvCZp/AglkUUq//NtXXhObTCGP2w2hQ2MWfoXTkWXqPzzAwQKBgB03XezMfR/+F5HQk2wxkjMC7p0PQuM7Luwr6tZzOR5lWLoUrVisgOmrN6HsCX6/9GYHRZPxXbW4cObatU1aj/IXRh1XKuE9nwqTtFVndW8ZFi1ok776X9uJ6T2O7kFuXeGHlF5tuiUF0+xtIEZUG4AiAQbOex8gjEUMrzE873WNAoGAT/x3aKf0YrFYPCjJQsDoMIfBBkv75nwjO/oWlJKaujpFbeBjCIj04vG8Ow32AP6QTp7b2WHt0LCmtXJFWNqekYVmyvJTnRbgJfB0FY7KGj0UtimbHOylx9j0pUPc3eOMRWx957Qi3UJIfX8pZb1r3RZRq6NUWc8KViymBt2WgkA=-----END RSA PRIVATE KEY-----`
-
-const public_key = `MIIFPTCCAyWgAwIBAgIJAIlBZ+gbD8BqMA0GCSqGSIb3DQEBBQUAMHMxCzAJBgNBAYTAkxLMQswCQYDVQQIDAJXUDEMMAoGA1UEBwwDQ09MMQ0wCwYDVQQKDARXU08yMQswCQYDVQQLDAJPQjELMAkGA1UEAwwCT0IxIDAeBgkqhkiG9w0BCQEWEW1hbHNoYW5pQHdzbzIuY29tMB4XDTIzMDMxMzExNDgwOVoXDTI4MDMxMTExNDgwOVowczELMAkGA1UEBhMCR0IxGjAYBgNVBAoMEVdTTzIgKFVLKSBMSU1JVEVEMSswKQYDVQRhDCJQU0RHQi1PQi1Vbmtub3duMDAxNTgwMDAwMUhRUXJaQUFYMRswGQYDVQQDDBIwMDE1ODAwMDAxSFFRclpBQVgwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDGYKfZLJAnA96lQ3AuCOl/wn0HzfnNUv01c43RIbaiQsS5VL8RChkryeCZHuOyDWYGkLfZzyZJQLnfeyBZ6hbzaoNzgBprmxzYmS2scG7+R1UzQnkJLxKn7eZToreldt91/UBARNhCZ2whM85Z5wcosAwv5vvSY+mDizBBujUbZ5J956OTxtED5kDgRerAaD6toOGSjpqlOB6qTBcHOPoY3vTanDcTJpeHgkGIIkCOIJZLopoeXrO7kU34qm9H0ZgOkOAak4Qwrth7GlHtVaN+PSy3xj+a8s89/2lQSdPez7uodGuoZbeMbzljZ5u9jPeT6Dm0tXRIa/iXMUIyuXv9AgMBAAGjgdMwgdAwDgYDVR0PAQH/BAQDAgbAMB0GA1UdDgQWBBQfCnzY4BVxYLd58PFpObzGSoCitjCBngYIKwYBBQUHAQMEgZEwgY4wEwYGBACORgEGMAkGBwQAjkYBBgIwdwYGBACBmCcCMG0wRjBEBgcEAIGYJwEBDAZQU1BfQVMGBwQAgZgnAQIMBlBTUF9QSQYHBACBmCcBAwwGUFNQX0FJBgcEAIGYJwEEDAZQU1BfSUMMG0ZpbmFuY2lhbCBDb25kdWN0IEF1dGhvcml0eQwGR0ItRkNBMA0GCSqGSIb3DQEBBQUAA4ICAQCbMjnB+o8IV0mYBu4iqaFkKBk+E6EnXEcJsRA7IrqGv8S2nWluaWbNYUGfbYaeTT6bfY4VcWsZMGG3TDNLj5VVFUg90zGmK4Balz+J0eIYrG5heialNlu4xjsTpqS4lIpK94SgWJCjuab4sMvif5kY4svY5z3tbM/uNHi69R9N8y4wO75cVhphftx1yWpNDscBSMHNS55m64O1a5D+Hng0umNbK1nkQbgBjkM5MTbcKrC3Twn4fQyTh8xkZp1d1xQbzUbCWy+VpoS0DYyCIlX9Ip9pQxIjOvhGS3toqgmHLBEztEaEm3Kq0+jX6gimzhqI/a+RbsJKB7Dyi9rc6Gu+dJqy2OxilwO4YWuN6SWDw1Oqhpjeku1o7ZJzeXDuqENHO56AboR9RSU1nt7SymYTOoswO8EP+gbEvoI34el+4C7fFObCHBOZqhvEWo4TXGN+9kiiFzyWacw85e+Kc+jy4ghnkS5pD1BKtaxoGiBxeZwJJ+hCEoDkU5WD2s46Dk7Zg9nPJE0sqdzLnvCcggvnugZZCgXmorSClfchPH8OJYKsmLCG4vGYXwPjz9KNfWWYUWOpOSD9KolKmEgF1pTgAP//gfBI1owP/epYbA6tuDJuedfIDPFaoaB4jj94lRQ83NWIabA1DAXGSIqltwesgf3IzM57dGeqBnHfJhN3Jg==`
-
-const private_key = `MIIEogIBAAKCAQEAxmCn2SyQJwPepUNwLgjpf8J9B835zVL9NXON0SG2okLEuVS/EQoZK8ngmR7jsg1mBpC32c8mSUC533sgWeoW82qDc4Aaa5sc2JktrHBu/kdVM0J5CS8Sp+3mU6K3pXbfdf1AQETYQmdsITPOWecHKLAML+b70mPpg4swQbo1G2eSfeejk8bRA+ZA4EXqwGg+raDhko6apTgeqkwXBzj6GN702pw3EyaXh4JBiCJAjiCWS6KaHl6zu5FN+KpvR9GYDpDgGpOEMK7YexpR7VWjfj0st8Y/mvLPPf9pUEnT3s+7qHRrqGW3jG85Y2ebvYz3k+g5tLV0SGv4lzFCMrl7/QIDAQABAoIBADXsE/POTyirvptBZ3674Wxe20mBzYLoKfebf1L3TQNyDrMpu/3PtuPWLfyxDsdZKQBj2fWUfx2uQFfkyfhmzvI/Y5fDnGrfcMnXaTjUHvdzQE98pBXA+9s1qUPWmQCa/Ua/HfXaQMZcAmJMCK0bRTDkGYvzx0N68QBWlzlmegUGeRDqnAzdWhJ5WWdUeFMyaPgYdowfD9QlbIvU7LM5gBK3rC3/R6UETeXdqMJPq/YckP7kS+PuZc3Q+E2CWFaf4Xoa3aZTdScPVkrHAPKJrw6aonbG4I6TXTkoamuFaZgbA2fJAGsgaOUKd1XyflV+PvfPYAJ7zp5Jzbq56VvAn0ECgYEA+B8sc5p5AARxj7XsYG2Cz7zJafh7ZweNL83LzoeFLrmvXmnrwzDWwbfm8yPQYiq3fbboixBzXwK7bhWqPqHztt07RYAWVXU7f5/zDU+otQpxMNiRSpBYR8TlZRBxR0gB3ccNh15bVEuMjHoCtVowAzP1NoQfGOv1xcn1m2Cd6vkCgYEAzK0ke218RyCwcn/UIKV1todIU1m6gZpQ0ZWh39ID0hgcqbOixuKSPldUgc+MRHPJGvIPd5VuVpZOTKqLEiOqM3rK5rjwYr8uD5BSIB7yCB1CwcPiGu41TgLsCU8NcjYb9thmZnUVVoAKIcwUkEdrCAEgVx3odJDopYent96GNiUCgYAltVckGo3ZGtPHa3aJERuYRrC1kjXu6o7ifPxEXwQ2nbGxP5e9CmcY+cH3obHBuYw5Ztrgh5eBEQE7Mb+11Rcc63JelaDPTAnG06A0na6eFQAu1DsAgf9oqNvUCDOvCZp/AglkUUq//NtXXhObTCGP2w2hQ2MWfoXTkWXqPzzAwQKBgB03XezMfR/+F5HQk2wxkjMC7p0PQuM7Luwr6tZzOR5lWLoUrVisgOmrN6HsCX6/9GYHRZPxXbW4cObatU1aj/IXRh1XKuE9nwqTtFVndW8ZFi1ok776X9uJ6T2O7kFuXeGHlF5tuiUF0+xtIEZUG4AiAQbOex8gjEUMrzE873WNAoGAT/x3aKf0YrFYPCjJQsDoMIfBBkv75nwjO/oWlJKaujpFbeBjCIj04vG8Ow32AP6QTp7b2WHt0LCmtXJFWNqekYVmyvJTnRbgJfB0FY7KGj0UtimbHOylx9j0pUPc3eOMRWx957Qi3UJIfX8pZb1r3RZRq6NUWc8KViymBt2WgkA=`
-
 function doAccount() {
-    // const appToken = getAccAppToken();
     console.log("doAccInitiation");
+    const token = getAccAppToken();
+    console.log("token", token);
+
     const result = doAccInitiation();
     console.log(result);
 
@@ -29,27 +23,15 @@ function doAccount() {
 
 function getAccAppToken() {
 
-    const apiUrl = 'https://localhost:9446/oauth2/token';
-    const assertion = createJsonWebToken();
-    const data = "grant_type=client_credentials&scope=accounts openid&client_id=PSDGB-OB-Unknown0015800001HQQrZAAX&" +
-        "redirect_uri=https://www.google.com&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer" +
-        "client_assertion=" + assertion;
+    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=https://www.google.com&scopes=accounts openid';
 
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'x-wso2-mutual-auth-cert': public_key
-        },
-        body: JSON.stringify(data),
-    };
-
-    fetch(apiUrl, requestOptions)
+    fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             console.log(response.json());
+            console.log(response.json().access_token);
         })
         .then(data => {
             outputElement.textContent = JSON.stringify(data, null, 2);
@@ -67,21 +49,24 @@ async function createJsonWebToken() {
         typ: "JWT"
     };
 
-    const privateKey = await jose.importPKCS8(pkcs8, alg)
-    const currentTimestamp = Math.floor(Date.now() / 1000)
+    var stringifiedHeader = CryptoJS.enc.Utf8.parse(JSON.stringify(header));
+    console.log("stringifiedHeader", stringifiedHeader);
 
-    const client_assertion_payload = {
-        "sub": "PSDGB-OB-Unknown0015800001HQQrZAAX",
-        "aud": "https://localhost:9446/oauth2/token",
-        "iss": "PSDGB-OB-Unknown0015800001HQQrZAAX",
-        "exp": currentTimestamp + 3600,
-        "iat": currentTimestamp,
-        "jti": "jti" + currentTimestamp
-    }
+    // const privateKey = await jose.importPKCS8(pkcs8, alg)
+    // const currentTimestamp = Math.floor(Date.now() / 1000)
 
-    return await new jose.SignJWT(payload)
-        .setProtectedHeader(header)
-        .sign(new TextEncoder().encode(private_key));
+    // const client_assertion_payload = {
+    //     "sub": "PSDGB-OB-Unknown0015800001HQQrZAAX",
+    //     "aud": "https://localhost:9446/oauth2/token",
+    //     "iss": "PSDGB-OB-Unknown0015800001HQQrZAAX",
+    //     "exp": currentTimestamp + 3600,
+    //     "iat": currentTimestamp,
+    //     "jti": "jti" + currentTimestamp
+    // }
+
+    // return await new jose.SignJWT(payload)
+    //     .setProtectedHeader(header)
+    //     .sign(new TextEncoder().encode(private_key));
 }
 
 function doAccInitiation() {
