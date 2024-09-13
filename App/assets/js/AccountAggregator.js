@@ -63,6 +63,7 @@ async function doAccInitiation(token) {
 
     try {
         const response = await fetch("http://localhost:9090/xs2a/v1/consents", {
+            method: "POST",
             body: JSON.stringify(body),
             headers: {
                 'token': token
