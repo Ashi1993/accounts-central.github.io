@@ -14,9 +14,8 @@ function getParameterByName(name, url) {
 function doAccount() {
     console.log("doAccInitiation");
     const token = getAccAppToken();
-    console.log("token", token);
 
-    const result = doAccInitiation();
+    const result = doAccInitiation(token);
     console.log(result);
 
 }
@@ -33,12 +32,14 @@ async function getAccAppToken() {
 
         const json = await response.json();
         console.log(json);
+        console.log("token", json.access_token);
+        return json.access_token;
     } catch (error) {
         console.error(error.message);
     }
 }
 
-function doAccInitiation(token) {
+async function doAccInitiation(token) {
     console.log("doAccInitiation");
 
     const body = {
@@ -59,27 +60,24 @@ function doAccInitiation(token) {
         "combinedServiceIndicator": false
     }
     console.log("doAccInitiation body ", body);
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'token': token
-        },
-        body: JSON.stringify(body)
-    };
 
-    fetch("http://localhost:9090/xs2a/v1/consents", requestOptions)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            console.log(response.json());
-            return response.json();
-        })
-        .then(data => {
-            outputElement.textContent = JSON.stringify(data, null, 2);
-        })
-        .catch(error => {
-            console.log(error);
-            return error;
+    try {
+        const response = await fetch("http://localhost:9090/xs2a/v1/consents", {
+            body: JSON.stringify(body),
+            headers: {
+                'token': token
+            },
+            // ...
         });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        console.log(json);
+        console.log("consentId", json.consentId);
+        return json.consentId;
+    } catch (error) {
+        console.error(error.message);
+    }
 }
