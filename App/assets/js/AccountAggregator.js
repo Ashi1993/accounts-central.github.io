@@ -14,6 +14,7 @@ function getParameterByName(name, url) {
 function doAccount() {
     console.log("doAccInitiation");
     const token = getAccAppToken();
+    console.log("token", token);
 
     const consentId = doAccInitiation(token);
     console.log(consentId);
