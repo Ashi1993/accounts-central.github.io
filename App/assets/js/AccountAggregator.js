@@ -23,7 +23,7 @@ async function doAccount() {
 
 async function getAccAppToken() {
 
-    const apiUrl = 'http://192.168.1.42:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=https://www.google.com&scopes=accounts openid';
+    const apiUrl = 'https://192.168.1.42:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=https://www.google.com&scopes=accounts openid';
 
     try {
         const response = await fetch(apiUrl);
@@ -63,7 +63,7 @@ async function doAccInitiation(token) {
     console.log("doAccInitiation body ", body);
 
     try {
-        const response = await fetch("http://192.168.1.42:9090/xs2a/v1/consents", {
+        const response = await fetch("https://192.168.1.42:9090/xs2a/v1/consents", {
             method: "POST",
             body: JSON.stringify(body),
             headers: {
