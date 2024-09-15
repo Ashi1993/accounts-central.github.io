@@ -67,7 +67,9 @@ async function doAccInitiation(token) {
             method: "POST",
             body: JSON.stringify(body),
             headers: {
-                'token': token
+                'token': token,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             // ...
         });
