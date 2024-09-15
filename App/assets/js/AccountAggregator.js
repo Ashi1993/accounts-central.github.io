@@ -131,7 +131,7 @@ async function retrieveAccDetails(url) {
 
 async function getAccUserToken(code) {
 
-    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&' +
+    const apiUrl = 'http://localhost:9090/xs2a/v1/userToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&' +
         'redirect_uri=https://ashi1993.github.io/dashboard.html&scopes=accounts openid&code=' + code;
 
     try {
