@@ -19,6 +19,9 @@ async function doAccount() {
     const consentId = await doAccInitiation(token);
     console.log(consentId);
 
+    const authUrl = await getAuthURL(consentId);
+    console.log("authUrl", authUrl);
+
 }
 
 async function getAccAppToken() {
@@ -81,6 +84,30 @@ async function doAccInitiation(token) {
         console.log(json);
         console.log("consentId", json.consentId);
         return json.consentId;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+
+async function getAuthURL(consentId) {
+    console.log("getAuthURL");
+
+    try {
+        const response = await fetch("http://localhost:9090/xs2a/v1/authorize", {
+            headers: {
+                'consentID': consentId,
+                'clientID': 'PSDGB-OB-Unknown0015800001HQQrZAAX',
+                'redirectUrl': 'https://www.google.com'
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.text();
+        console.log(json);
+        return json;
     } catch (error) {
         console.error(error.message);
     }
