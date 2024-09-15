@@ -44,21 +44,21 @@ async function doAccInitiation(token) {
     console.log("doAccInitiation");
 
     const body = {
-        "access": {
-            "accounts": [
+        access: {
+            accounts: [
 
             ],
-            "balances": [
+            balances: [
 
             ],
-            "transactions": [
+            transactions: [
 
             ]
         },
-        "recurringIndicator": true,
-        "validUntil": "2024-12-03",
-        "frequencyPerDay": 4,
-        "combinedServiceIndicator": false
+        recurringIndicator: true,
+        validUntil: "2024-12-03",
+        frequencyPerDay: 4,
+        combinedServiceIndicator: false
     }
     console.log("doAccInitiation body ", body);
 
