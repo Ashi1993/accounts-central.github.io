@@ -27,7 +27,7 @@ async function doAccount() {
 
 async function getAccAppToken() {
 
-    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=https://www.google.com&scopes=accounts openid';
+    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=https://ashi1993.github.io/dashboard.html&scopes=accounts openid';
 
     try {
         const response = await fetch(apiUrl);
@@ -84,6 +84,7 @@ async function doAccInitiation(token) {
         const json = await response.json();
         console.log(json);
         console.log("consentId", json.consentId);
+        localStorage.setItem("accConsentId", json.consentId);
         return json.consentId;
     } catch (error) {
         console.error(error.message);
@@ -99,7 +100,63 @@ async function getAuthURL(consentId) {
             headers: {
                 'consentID': consentId,
                 'clientID': 'PSDGB-OB-Unknown0015800001HQQrZAAX',
-                'redirectUrl': 'https://www.google.com'
+                'redirectUrl': 'https://ashi1993.github.io/dashboard.html'
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.text();
+        console.log(json);
+        return json;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+
+async function retrieveAccDetails(url) {
+    if (!url) url = window.location.href;
+    var code = url.split("?")[1].split("&")[0].split("code")[1].substring(1);
+    console.log("code", code);
+    const token = await getAccUserToken();
+    console.log("token", token);
+
+    const acc = await getAccDetails(localStorage.getItem("accConsentId"), token);
+    console.log("acc", acc);
+    window.location.href = "dashboard.html?bank=1";
+
+}
+
+async function getAccUserToken(code) {
+
+    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&' +
+        'redirect_uri=https://ashi1993.github.io/dashboard.html&scopes=accounts openid&code=' + code;
+
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        console.log(json);
+        console.log("token", json.access_token);
+        return json.access_token;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+async function getAccDetails(consentId, token) {
+    console.log("getAccDetails");
+
+    try {
+        const response = await fetch("http://localhost:9090/xs2a/v1/accounts", {
+            headers: {
+                'consentId': consentId,
+                'token': token
             },
         });
         if (!response.ok) {
