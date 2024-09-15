@@ -11,12 +11,12 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-function doAccount() {
+async function doAccount() {
     console.log("doAccInitiation");
-    const token = getAccAppToken();
+    const token = await getAccAppToken();
     console.log("token", token);
 
-    const consentId = doAccInitiation(token);
+    const consentId = await doAccInitiation(token);
     console.log(consentId);
 
 }
