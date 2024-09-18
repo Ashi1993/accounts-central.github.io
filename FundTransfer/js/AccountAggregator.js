@@ -188,7 +188,7 @@ async function getPaymentAuthURL(consentId) {
                 'consentID': consentId,
                 'clientID': 'PSDGB-OB-Unknown0015800001HQQrZAAX',
                 'redirectUrl': 'http://localhost:9090/xs2a/v1/callback',
-                'scopes': 'pis:' + consentId,
+                'scope': 'pis:' + consentId,
             },
         });
         if (!response.ok) {
