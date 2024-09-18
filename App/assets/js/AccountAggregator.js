@@ -12,7 +12,7 @@ function getParameterByName(name, url) {
 }
 
 async function doAccount() {
-    console.log("doAccInitiation");
+    console.log("doAccount");
     const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=accounts openid';
 
     const token = await getAccAppToken(apiUrl);
