@@ -27,23 +27,25 @@ async function doAccount() {
 
 }
 
-// async function doPayment() {
-//     console.log("doPayment");
-//     const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=payments openid';
+async function doPayment() {
+    console.log("doPayment");
+    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=payments openid';
 
-//     const token = await getAccAppToken(apiUrl);
-//     console.log("token", token);
+    const token = await getAccAppToken(apiUrl);
+    console.log("token", token);
 
-//     const consentId = await doAccInitiation(token);
-//     console.log(consentId);
+    const consentId = await doPaymentInitiation(token);
+    console.log(consentId);
 
-//     const authUrl = await getAuthURL(consentId);
-//     console.log("authUrl", authUrl);
-//     window.location.replace(authUrl);
+    const authUrl = await getPaymentAuthURL(consentId);
+    console.log("authUrl", authUrl);
+    window.location.replace(authUrl);
 
-// }
+}
 
 async function getAccAppToken(apiUrl) {
+
+    console.log("getAccAppToken");
 
     try {
         const response = await fetch(apiUrl);
@@ -52,8 +54,6 @@ async function getAccAppToken(apiUrl) {
         }
 
         const json = await response.json();
-        console.log(json);
-        console.log("token", json.access_token);
         return json.access_token;
     } catch (error) {
         console.error(error.message);
@@ -134,9 +134,10 @@ async function doPaymentInitiation(token) {
             headers: {
                 'token': token,
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            // ...
+                'Content-Type': 'application/json',
+                'paymentType': 'payments',
+                'paymentProduct': 'sepa-credit-transfers'
+            }
         });
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
@@ -144,9 +145,8 @@ async function doPaymentInitiation(token) {
 
         const json = await response.json();
         console.log(json);
-        console.log("consentId", json.consentId);
-        localStorage.setItem("accConsentId", json.consentId);
-        return json.consentId;
+        console.log("paymentId", json.paymentId);
+        return json.paymentId;
     } catch (error) {
         console.error(error.message);
     }
