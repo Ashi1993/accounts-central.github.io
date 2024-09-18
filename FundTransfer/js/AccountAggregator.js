@@ -39,7 +39,7 @@ async function doPayment() {
 
     const authUrl = await getPaymentAuthURL(consentId);
     console.log("authUrl", authUrl);
-    window.location.replace(authUrl);
+    // window.location.replace(authUrl);
 
 }
 
