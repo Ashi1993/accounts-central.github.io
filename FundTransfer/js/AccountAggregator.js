@@ -37,9 +37,9 @@ async function doPayment() {
     const consentId = await doPaymentInitiation(token);
     console.log(consentId);
 
-    // const authUrl = await getPaymentAuthURL(consentId);
-    // console.log("authUrl", authUrl);
-    // window.location.replace(authUrl);
+    const authUrl = await getPaymentAuthURL(consentId);
+    console.log("authUrl", authUrl);
+    window.location.replace(authUrl);
 
 }
 
@@ -146,8 +146,8 @@ async function doPaymentInitiation(token) {
 
         const json = await response.json();
         console.log(json);
-        console.log("consentId", json.consentId);
-        localStorage.setItem("paymentConsentId", json.consentId);
+        console.log("paymentId", json.consentId);
+        localStorage.setItem("paymentConsentId", json.paymentId);
         return json.consentId;
     } catch (error) {
         console.error(error.message);
