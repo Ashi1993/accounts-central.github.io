@@ -51,7 +51,7 @@
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="input-group input-wrap">
-                                            <input type="text" autocomplete="off" id="ft_accountNumber"
+                                            <input type="number" autocomplete="off" id="ft_accountNumber"
                                                 name="ft_accountNumber" title="ft_accountNumber" class="form-control"
                                                 placeholder="Account Number">
                                         </div>
@@ -71,7 +71,7 @@
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="input-group input-wrap">
-                                            <input type="text" id="ft_amount" name="ft_amount" title="ft_amount"
+                                            <input type="number" id="ft_amount" name="ft_amount" title="ft_amount"
                                                 class="form-control" placeholder="Amount">
                                         </div>
                                     </div>
@@ -115,22 +115,7 @@
     <script src="js/demos.js"></script>
     <script>
         // window.parent.$('#demo-desc').html('Once you select a bank, the AISP makes a account initiation request to the bank. The selected bank then prompts you to log in.');
-        // window.parent.$("iframe#mobile-content").attr('data-prevsrc', 'demos/pisp_demo/directpay.html');
-
-        function doTransfer() {
-            console.log("doTransfer");
-            var ft_bank = document.getElementById('ft_bank').value;
-            var ft_accountNumber = document.getElementById('ft_accountNumber').value;
-            var ft_accountName = document.getElementById('ft_accountName').value;
-            var ft_amount = document.getElementById('ft_amount').value;
-            var ft_currency = document.getElementById('ft_currency').value;
-            window.sessionStorage.setItem("ft_type", "within_bank_ft");
-            window.sessionStorage.setItem("ft_bank", ft_bank);
-            window.sessionStorage.setItem("ft_accountNumber", ft_accountNumber);
-            window.sessionStorage.setItem("ft_accountName", ft_accountName);
-            window.sessionStorage.setItem("ft_amount", ft_amount);
-            window.sessionStorage.setItem("ft_currency", ft_currency);
-        }
+        // window.parent.$("iframe#mobile-content").attr('data-prevsrc', 'demos/pisp_demo/directpay.html')
     </script>
 </body>
 

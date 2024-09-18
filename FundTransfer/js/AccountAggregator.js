@@ -34,8 +34,8 @@ async function doPayment() {
     const token = await getAccAppToken(apiUrl);
     console.log("token", token);
 
-    // const consentId = await doPaymentInitiation(token);
-    // console.log(consentId);
+    const consentId = await doPaymentInitiation(token);
+    console.log(consentId);
 
     // const authUrl = await getPaymentAuthURL(consentId);
     // console.log("authUrl", authUrl);

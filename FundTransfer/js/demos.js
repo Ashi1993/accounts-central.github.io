@@ -28,12 +28,12 @@ $(function () {
             $("link#theme").attr("href", bank.style);
         }
 
-        if (location.search) {
-            var style = location.search.replace("?", "").split("=");
-            (style[0] === "bank" && parseInt(style[1]) === 2) ? updateStyles(eudcBank, 2) : updateStyles(citizenBank, 1);
-        }
-        else {
-            updateStyles(citizenBank, 1);
-        }
+        // if (location.search) {
+        //     var style = location.search.replace("?", "").split("=");
+        //     (style[0] === "bank" && parseInt(style[1]) === 2) ? updateStyles(eudcBank, 2) : updateStyles(citizenBank, 1);
+        // }
+        // else {
+        //     updateStyles(citizenBank, 1);
+        // }
     }
 });
