@@ -150,7 +150,7 @@ async function doPaymentInitiation(token) {
         console.log(json);
         console.log("paymentId", json.paymentId);
         localStorage.setItem("paymentConsentId", json.paymentId);
-        return json.consentId;
+        return json.paymentId;
     } catch (error) {
         console.error(error.message);
     }
