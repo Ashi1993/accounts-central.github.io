@@ -8,14 +8,14 @@ $(function () {
         var citizenBank = {
             title: "Maurishes Commencial Bank Open Banking Solution",
             footer: "Maurishes Commencial Bank",
-            style: "css/citizenbank.css",
-            logo: "img/mcb.jpg"
+            style: "App/assets/css/citizenbank.css",
+            logo: "App/assets/images/mcb.jpg"
         },
             eudcBank = {
                 title: "EUDC Bank Open Banking Solution",
                 footer: "EUDC Bank",
-                style: "css/eudcbank.css",
-                logo: "img/eudc_bank_logo.png"
+                style: "App/assets/css/eudcbank.css",
+                logo: "App/assets/images/eudc_bank_logo.png"
             };
 
         function updateStyles(bank, bankId) {
