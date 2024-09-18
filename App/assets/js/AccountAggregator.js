@@ -23,7 +23,7 @@ async function doAccount() {
 
     const authUrl = await getAccAuthURL(consentId);
     console.log("authUrl", authUrl);
-    window.location.replace(authUrl);
+    // window.location.replace(authUrl);
 
 }
 
