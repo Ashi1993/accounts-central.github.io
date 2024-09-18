@@ -13,6 +13,24 @@ function getParameterByName(name, url) {
 
 async function doAccount() {
     console.log("doAccInitiation");
+    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=accounts openid';
+
+    const token = await getAccAppToken();
+    console.log("token", token);
+
+    const consentId = await doAccInitiation(token);
+    console.log(consentId);
+
+    const authUrl = await getAccAuthURL(consentId);
+    console.log("authUrl", authUrl);
+    window.location.replace(authUrl);
+
+}
+
+async function doPayment() {
+    console.log("doPayment");
+    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=payments openid';
+
     const token = await getAccAppToken();
     console.log("token", token);
 
@@ -25,9 +43,7 @@ async function doAccount() {
 
 }
 
-async function getAccAppToken() {
-
-    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=https://ashi1993.github.io/dashboard.html&scopes=accounts openid';
+async function getAccAppToken(apiUrl) {
 
     try {
         const response = await fetch(apiUrl);
@@ -91,8 +107,53 @@ async function doAccInitiation(token) {
     }
 }
 
+async function doPaymentInitiation(token) {
+    console.log("doPaymentInitiation");
 
-async function getAuthURL(consentId) {
+    const body = {
+        instructedAmount: {
+            currency: "EUR",
+            amount: "123.50"
+        },
+        debtorAccount: {
+            iban: "DE12345678901234567890",
+            currency: "EUR"
+        },
+        creditorName: "Merchant123",
+        creditorAccount: {
+            iban: "DE98765432109876543210"
+        },
+        remittanceInformationUnstructured: "Ref Number Merchant"
+    }
+    console.log("doPaymentInitiation body ", body);
+
+    try {
+        const response = await fetch("http://localhost:9090/xs2a/v1/payments", {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+                'token': token,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            // ...
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        console.log(json);
+        console.log("consentId", json.consentId);
+        localStorage.setItem("accConsentId", json.consentId);
+        return json.consentId;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+
+async function getAccAuthURL(consentId) {
     console.log("getAuthURL");
 
     try {
@@ -100,7 +161,32 @@ async function getAuthURL(consentId) {
             headers: {
                 'consentID': consentId,
                 'clientID': 'PSDGB-OB-Unknown0015800001HQQrZAAX',
-                'redirectUrl': 'https://ashi1993.github.io/dashboard.html'
+                'redirectUrl': 'http://localhost:9090/xs2a/v1/callback',
+                'scopes': 'ais:' + consentId,
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.text();
+        console.log(json);
+        return json;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+async function getPaymentAuthURL(consentId) {
+    console.log("getAuthURL");
+
+    try {
+        const response = await fetch("http://localhost:9090/xs2a/v1/authorize", {
+            headers: {
+                'consentID': consentId,
+                'clientID': 'PSDGB-OB-Unknown0015800001HQQrZAAX',
+                'redirectUrl': 'http://localhost:9090/xs2a/v1/callback',
+                'scopes': 'pis:' + consentId,
             },
         });
         if (!response.ok) {
@@ -132,7 +218,27 @@ async function retrieveAccDetails(url) {
 async function getAccUserToken(code) {
 
     const apiUrl = 'http://localhost:9090/xs2a/v1/userToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&' +
-        'redirect_uri=https://ashi1993.github.io/dashboard.html&scopes=accounts openid&code=' + code;
+        'redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=accounts openid&code=' + code;
+
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        console.log(json);
+        console.log("token", json.access_token);
+        return json.access_token;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+async function getPaymentUserToken(code) {
+
+    const apiUrl = 'http://localhost:9090/xs2a/v1/userToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&' +
+        'redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=payments openid&code=' + code;
 
     try {
         const response = await fetch(apiUrl);
@@ -151,6 +257,28 @@ async function getAccUserToken(code) {
 
 async function getAccDetails(consentId, token) {
     console.log("getAccDetails");
+
+    try {
+        const response = await fetch("http://localhost:9090/xs2a/v1/accounts", {
+            headers: {
+                'consentId': consentId,
+                'token': token
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.text();
+        console.log(json);
+        return json;
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+async function getPaymentDetails(consentId, token) {
+    console.log("getPaymentDetails");
 
     try {
         const response = await fetch("http://localhost:9090/xs2a/v1/accounts", {
