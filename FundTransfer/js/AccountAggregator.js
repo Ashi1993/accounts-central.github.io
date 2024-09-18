@@ -55,7 +55,7 @@ async function getAccAppToken(apiUrl) {
 
         const json = await response.json();
         console.log(json);
-        console.log("token", json.access_token);
+        // console.log("token", json.access_token);
         return json.access_token;
     } catch (error) {
         console.error(error.message);
