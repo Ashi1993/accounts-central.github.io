@@ -34,10 +34,10 @@ async function doPayment() {
     const token = await getAccAppToken(apiUrl);
     console.log("token", token);
 
-    const consentId = await doAccInitiation(token);
+    const consentId = await doPaymentInitiation(token);
     console.log(consentId);
 
-    const authUrl = await getAuthURL(consentId);
+    const authUrl = await getPaymentAuthURL(consentId);
     console.log("authUrl", authUrl);
     window.location.replace(authUrl);
 
@@ -134,7 +134,9 @@ async function doPaymentInitiation(token) {
             headers: {
                 'token': token,
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'paymentType': 'payments',
+                'paymentProduct': 'sepa-credit-transfers'
             },
             // ...
         });
@@ -145,7 +147,7 @@ async function doPaymentInitiation(token) {
         const json = await response.json();
         console.log(json);
         console.log("consentId", json.consentId);
-        localStorage.setItem("accConsentId", json.consentId);
+        localStorage.setItem("paymentConsentId", json.consentId);
         return json.consentId;
     } catch (error) {
         console.error(error.message);
