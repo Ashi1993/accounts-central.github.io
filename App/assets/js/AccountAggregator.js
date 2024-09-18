@@ -27,21 +27,21 @@ async function doAccount() {
 
 }
 
-async function doPayment() {
-    console.log("doPayment");
-    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=payments openid';
+// async function doPayment() {
+//     console.log("doPayment");
+//     const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=payments openid';
 
-    const token = await getAccAppToken(apiUrl);
-    console.log("token", token);
+//     const token = await getAccAppToken(apiUrl);
+//     console.log("token", token);
 
-    const consentId = await doAccInitiation(token);
-    console.log(consentId);
+//     const consentId = await doAccInitiation(token);
+//     console.log(consentId);
 
-    const authUrl = await getAuthURL(consentId);
-    console.log("authUrl", authUrl);
-    window.location.replace(authUrl);
+//     const authUrl = await getAuthURL(consentId);
+//     console.log("authUrl", authUrl);
+//     window.location.replace(authUrl);
 
-}
+// }
 
 async function getAccAppToken(apiUrl) {
 
