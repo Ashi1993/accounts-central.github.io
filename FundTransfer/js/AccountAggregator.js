@@ -45,6 +45,8 @@ async function doPayment() {
 
 async function getAccAppToken(apiUrl) {
 
+    console.log("getAccAppToken");
+
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
