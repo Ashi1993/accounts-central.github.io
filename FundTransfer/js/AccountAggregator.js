@@ -139,8 +139,7 @@ async function doPaymentInitiation(token) {
                 'Content-Type': 'application/json',
                 'paymentType': 'payments',
                 'paymentProduct': 'sepa-credit-transfers'
-            },
-            // ...
+            }
         });
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
@@ -149,7 +148,6 @@ async function doPaymentInitiation(token) {
         const json = await response.json();
         console.log(json);
         console.log("paymentId", json.paymentId);
-        localStorage.setItem("paymentConsentId", json.paymentId);
         return json.paymentId;
     } catch (error) {
         console.error(error.message);

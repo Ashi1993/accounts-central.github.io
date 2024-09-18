@@ -1,4 +1,5 @@
 $(function () {
+    console.log("demos.js loaded");
     $("a:not([role=main-action])").click(function (e) {
         e.preventDefault();
     });
