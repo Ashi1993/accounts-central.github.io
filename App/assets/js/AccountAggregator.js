@@ -18,11 +18,11 @@ async function doAccount() {
     const token = await getAccAppToken();
     console.log("token", token);
 
-    const consentId = await doAccInitiation(token);
-    console.log(consentId);
+    // const consentId = await doAccInitiation(token);
+    // console.log(consentId);
 
-    const authUrl = await getAccAuthURL(consentId);
-    console.log("authUrl", authUrl);
+    // const authUrl = await getAccAuthURL(consentId);
+    // console.log("authUrl", authUrl);
     // window.location.replace(authUrl);
 
 }
