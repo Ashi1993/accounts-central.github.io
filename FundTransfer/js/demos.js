@@ -8,20 +8,20 @@ $(function () {
         var citizenBank = {
             title: "Maurishes Commencial Bank Open Banking Solution",
             footer: "Maurishes Commencial Bank",
-            style: "App/assets/css/citizenbank.css",
-            logo: "App/assets/images/mcb.jpg"
+            style: "css/citizenbank.css",
+            logo: "img/mcb.jpg"
         },
             eudcBank = {
                 title: "EUDC Bank Open Banking Solution",
                 footer: "EUDC Bank",
-                style: "App/assets/css/eudcbank.css",
-                logo: "App/assets/images/eudc_bank_logo.png"
+                style: "css/eudcbank.css",
+                logo: "img/eudc_bank_logo.png"
             };
 
         function updateStyles(bank, bankId) {
-            $('a[role=main-action]').each(function () {
-                $(this).attr('href', ($(this).attr('href') + '?bank=' + bankId));
-            });
+            // $('a[role=main-action]').each(function () {
+            //     $(this).attr('href', ($(this).attr('href') + '?bank=' + bankId));
+            // });
             $("img.logo").attr("src", bank.logo);
             $('title').html(bank.title);
             $('footer span.bank-name').html(bank.footer);
