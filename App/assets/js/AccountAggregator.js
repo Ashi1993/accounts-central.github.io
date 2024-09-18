@@ -13,10 +13,10 @@ function getParameterByName(name, url) {
 
 async function doAccount() {
     console.log("doAccInitiation");
-    const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=accounts openid';
+    // const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=accounts openid';
 
-    const token = await getAccAppToken();
-    console.log("token", token);
+    // const token = await getAccAppToken();
+    // console.log("token", token);
 
     // const consentId = await doAccInitiation(token);
     // console.log(consentId);
