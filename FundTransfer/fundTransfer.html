@@ -112,13 +112,11 @@
             console.log("doTransfer");
             var ft_bank = document.getElementById('ft_bank').value;
             var ft_accountNumber = document.getElementById('ft_accountNumber').value;
+            var ft_accountName = "John Doe";
             var ft_amount = document.getElementById('ft_amount').value;
             var ft_currency = document.getElementById('ft_currency').value;
-            window.sessionStorage.setItem("ft_type", "own_acc_ft");
-            window.sessionStorage.setItem("ft_bank", ft_bank);
-            window.sessionStorage.setItem("ft_accountNumber", ft_accountNumber);
-            window.sessionStorage.setItem("ft_amount", ft_amount);
-            window.sessionStorage.setItem("ft_currency", ft_currency);
+
+            doPayment(ft_bank, ft_accountNumber, ft_accountName, ft_amount, ft_currency);
         }
     </script>
 </body>

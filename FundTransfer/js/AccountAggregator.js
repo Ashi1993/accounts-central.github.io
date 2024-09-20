@@ -27,14 +27,14 @@ async function doAccount() {
 
 }
 
-async function doPayment() {
+async function doPayment(bank, accountNumber, accountName, amount, currency) {
     console.log("doPayment");
     const apiUrl = 'http://localhost:9090/xs2a/v1/appToken?clientId=PSDGB-OB-Unknown0015800001HQQrZAAX&redirect_uri=http://localhost:9090/xs2a/v1/callback&scopes=payments openid';
 
     const token = await getAccAppToken(apiUrl);
     console.log("token", token);
 
-    const consentId = await doPaymentInitiation(token);
+    const consentId = await doPaymentInitiation(token, bank, accountNumber, accountName, amount, currency);
     console.log(consentId);
 
     const authUrl = await getPaymentAuthURL(consentId);
@@ -109,21 +109,21 @@ async function doAccInitiation(token) {
     }
 }
 
-async function doPaymentInitiation(token) {
+async function doPaymentInitiation(token, accountNumber, accountName, amount, currency) {
     console.log("doPaymentInitiation");
 
     const body = {
         instructedAmount: {
-            currency: "EUR",
-            amount: "123.50"
+            currency: currency,
+            amount: amount.toString()
         },
         debtorAccount: {
             iban: "DE12345678901234567890",
-            currency: "EUR"
+            currency: "USD"
         },
-        creditorName: "Merchant123",
+        creditorName: accountName,
         creditorAccount: {
-            iban: "DE98765432109876543210"
+            iban: accountNumber.toString()
         },
         remittanceInformationUnstructured: "Ref Number Merchant"
     }

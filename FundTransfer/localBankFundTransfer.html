@@ -128,19 +128,12 @@
         function doTransfer() {
             console.log("doTransfer");
             var ft_bank = document.getElementById('ft_bank').value;
-            console.log("ft_bank", ft_bank);
-            var ft_bankName = document.getElementById('ft_bankName').value;
             var ft_accountNumber = document.getElementById('ft_accountNumber').value;
             var ft_accountName = document.getElementById('ft_accountName').value;
             var ft_amount = document.getElementById('ft_amount').value;
             var ft_currency = document.getElementById('ft_currency').value;
-            window.sessionStorage.setItem("ft_type", "local_bank_ft");
-            window.sessionStorage.setItem("ft_bank", ft_bank);
-            window.sessionStorage.setItem("ft_bankName", ft_bankName);
-            window.sessionStorage.setItem("ft_accountNumber", ft_accountNumber);
-            window.sessionStorage.setItem("ft_accountName", ft_accountName);
-            window.sessionStorage.setItem("ft_amount", ft_amount);
-            window.sessionStorage.setItem("ft_currency", ft_currency);
+
+            doPayment(ft_bank, ft_accountNumber, ft_accountName, ft_amount, ft_currency);
         }
     </script>
 </body>

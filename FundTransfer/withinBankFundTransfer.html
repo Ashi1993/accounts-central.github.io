@@ -116,6 +116,17 @@
     <script>
         // window.parent.$('#demo-desc').html('Once you select a bank, the AISP makes a account initiation request to the bank. The selected bank then prompts you to log in.');
         // window.parent.$("iframe#mobile-content").attr('data-prevsrc', 'demos/pisp_demo/directpay.html')
+
+        function doTransfer() {
+            console.log("doTransfer");
+            var ft_bank = document.getElementById('ft_bank').value;
+            var ft_accountNumber = document.getElementById('ft_accountNumber').value;
+            var ft_accountName = document.getElementById('ft_accountName').value;
+            var ft_amount = document.getElementById('ft_amount').value;
+            var ft_currency = document.getElementById('ft_currency').value;
+
+            doPayment(ft_bank, ft_accountNumber, ft_accountName, ft_amount, ft_currency);
+        }
     </script>
 </body>
 
