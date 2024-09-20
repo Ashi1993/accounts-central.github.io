@@ -5,8 +5,8 @@ $(function () {
 
     if ($('html').hasClass('bank')) {
         var citizenBank = {
-            title: "Maurishes Commencial Bank Open Banking Solution",
-            footer: "Maurishes Commencial Bank",
+            title: "MCB Open Banking Solution",
+            footer: "MCB",
             style: "css/citizenbank.css",
             logo: "img/mcb.jpg"
         },
