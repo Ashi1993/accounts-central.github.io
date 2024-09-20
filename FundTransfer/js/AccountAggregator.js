@@ -111,6 +111,10 @@ async function doAccInitiation(token) {
 
 async function doPaymentInitiation(token, accountNumber, accountName, amount, currency) {
     console.log("doPaymentInitiation");
+    console.log(accountNumber);
+    console.log(accountName);
+    console.log(amount);
+    console.log(currency);
 
     const body = {
         instructedAmount: {
