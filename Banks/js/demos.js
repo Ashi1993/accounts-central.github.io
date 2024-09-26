@@ -5,10 +5,10 @@ $(function () {
 
     if ($('html').hasClass('bank')) {
         var citizenBank = {
-            title: "MCB Open Banking Solution",
-            footer: "MCB",
+            title: "Citizen Bank Open Banking Solution",
+            footer: "Citizen Bank",
             style: "css/citizenbank.css",
-            logo: "img/mcb.jpg"
+            logo: "img/citizen_bank_logo.png"
         },
             eudcBank = {
                 title: "EUDC Bank Open Banking Solution",
