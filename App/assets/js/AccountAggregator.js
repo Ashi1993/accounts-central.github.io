@@ -76,7 +76,7 @@ async function doAccInitiation(token) {
             ]
         },
         recurringIndicator: true,
-        validUntil: "2024-12-03",
+        validUntil: "2025-12-03",
         frequencyPerDay: 4,
         combinedServiceIndicator: false
     }
